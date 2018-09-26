@@ -7,12 +7,14 @@ import javax.annotation.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ym.dao.demo.DemoDao;
 import com.ym.entity.demo.Demo;
 import com.ym.service.demo.DemoService;
 
 @Service
+@Transactional
 public class DemoServiceImpl implements DemoService {
 
 	@Resource
@@ -31,7 +33,7 @@ public class DemoServiceImpl implements DemoService {
 
 	@Override
 	public Demo add(Demo demo) {
-		return demoDao.add(demo);
+		return demoDao.save(demo);
 	}
 
 	@Override
