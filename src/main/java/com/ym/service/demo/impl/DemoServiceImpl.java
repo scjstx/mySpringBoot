@@ -20,8 +20,8 @@ public class DemoServiceImpl implements DemoService {
 
 	@Override
 	public Page<Demo> listPage(String keyword, Pageable pageable) {
-//		return demoDao.findByNameContainingOrNicknameContaining(keyword, keyword, pageable);
-		return demoDao.myListPage(keyword, pageable);
+		return demoDao.findByNameContainingOrNicknameContaining(keyword, keyword, pageable);
+//		return demoDao.myListPage(keyword, pageable);
 	}
 
 	@Override
