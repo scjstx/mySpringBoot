@@ -12,5 +12,13 @@ public interface DemoService {
 	Page<Demo> listPage(String keyword, Pageable pageable);
 	
 	List<Demo> list(String name, String nickname);
-
+	
+	Demo add(Demo demo);
+	
+	Demo update(Demo demo);
+	
+	void delete(Demo demo);
+	
+	void deleteById(String id);
+	
 }

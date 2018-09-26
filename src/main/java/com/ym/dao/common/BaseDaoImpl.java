@@ -9,11 +9,23 @@ import javax.persistence.Query;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 
 public class BaseDaoImpl<T> {
 
 	@PersistenceContext
 	public EntityManager entityManager;
+
+	@Transactional
+	public <S extends T> S add(S entity) {
+		entityManager.persist(entity);
+		return entity;
+	}
+
+	@Transactional
+	public <S extends T> S update(S entity) {
+		return entityManager.merge(entity);
+	}
 
 	/**
 	 * 拼接 order by语句

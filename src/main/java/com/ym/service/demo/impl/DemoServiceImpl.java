@@ -14,14 +14,14 @@ import com.ym.service.demo.DemoService;
 
 @Service
 public class DemoServiceImpl implements DemoService {
-	
+
 	@Resource
 	DemoDao demoDao;
 
 	@Override
 	public Page<Demo> listPage(String keyword, Pageable pageable) {
 		return demoDao.findByNameContainingOrNicknameContaining(keyword, keyword, pageable);
-//		return demoDao.myListPage(keyword, pageable);
+		// return demoDao.myListPage(keyword, pageable);
 	}
 
 	@Override
@@ -29,5 +29,24 @@ public class DemoServiceImpl implements DemoService {
 		return demoDao.findByNameContainingOrNicknameContaining(name, nickname);
 	}
 
+	@Override
+	public Demo add(Demo demo) {
+		return demoDao.add(demo);
+	}
+
+	@Override
+	public Demo update(Demo demo) {
+		return demoDao.update(demo);
+	}
+
+	@Override
+	public void delete(Demo demo) {
+		demoDao.delete(demo);
+	}
+
+	@Override
+	public void deleteById(String id) {
+		demoDao.delete(id);
+	}
 
 }
